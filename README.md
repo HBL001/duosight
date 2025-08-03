@@ -1,9 +1,21 @@
 # DuoSight
 
-Thermal imaging reader and application for Verdin i.MX8M Plus + FLIR/Melexis sensors (MLX90640).\
+Thermal imaging reader and AI analysis application for Verdin i.MX8M Plus + FLIR/Melexis sensors (MLX90640).\
 Cross-compiled using Docker + Yocto SDK. Runs headless or with Qt/GPU frontend (planned).
 
-(C) 2025 Highland Biosciences Ltd.  Dr. Richard Day
+(C) 2025 Highland Biosciences Ltd.  
+
+Dr. Richard Day
+Highland Biosciences Ltd
+Ness House
+Greenleonachs Road
+Duncanston
+Dingwall.
+Scotland IV7 8JD
+
++44 1 349 848 163
+
+Usage: for research use only
 
 See disclaimer at the end of this document
 
