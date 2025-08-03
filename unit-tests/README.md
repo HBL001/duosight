@@ -4,7 +4,7 @@ This repository includes a test script, `run-tests.sh`, which runs functional te
 
 ---
 
-## ᾚa Purpose
+## Purpose
 
 The `run-tests.sh` script provides a standard way to verify that the board’s connected peripherals are accessible and responding correctly. It is intended for use during:
 
