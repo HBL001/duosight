@@ -136,6 +136,21 @@ ssh -T git@github.com
 
 ---
 
+📁 Project Layout 
+
+
+duosight/
+├── src/                    # [1] Outer src (shared code)
+├── mlx90640-reader/
+│   └── src/               # [2] Inner src (sensor-specific demo/app)
+🧠 Suggested Structure and Intent
+Directory	Purpose
+src/	General utilities, shared hardware abstraction (I2C/SPI wrapper, etc.)
+mlx90640-reader/src/	Specific application logic for MLX90640 demo (e.g. frame reading, display)
+
+
+---
+
 ## 𞷹 .gitignore
 
 Recommended `.gitignore`:
