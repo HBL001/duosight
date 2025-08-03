@@ -191,11 +191,4 @@ This software is provided for experimental, educational, and prototyping use onl
 
 The author(s) and contributors make **no warranties or guarantees** regarding suitability for medical, life-support, or safety-critical applications.
 
----
-
-Let me know if you want to add:
-
-- A project badge
-- A screenshot of the thermal output
-- CI setup for auto-compilation
 

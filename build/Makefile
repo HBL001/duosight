@@ -117,41 +117,67 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named thermal_viewer
+# Target rules for targets named test_i2cUtils
 
 # Build rule for target.
-thermal_viewer: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 thermal_viewer
-.PHONY : thermal_viewer
+test_i2cUtils: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_i2cUtils
+.PHONY : test_i2cUtils
 
 # fast build rule for target.
-thermal_viewer/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/thermal_viewer.dir/build.make CMakeFiles/thermal_viewer.dir/build
-.PHONY : thermal_viewer/fast
+test_i2cUtils/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_i2cUtils.dir/build.make CMakeFiles/test_i2cUtils.dir/build
+.PHONY : test_i2cUtils/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+#=============================================================================
+# Target rules for targets named duosight
+
+# Build rule for target.
+duosight: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 duosight
+.PHONY : duosight
+
+# fast build rule for target.
+duosight/fast:
+	$(MAKE) $(MAKESILENT) -f libduosight/CMakeFiles/duosight.dir/build.make libduosight/CMakeFiles/duosight.dir/build
+.PHONY : duosight/fast
+
+#=============================================================================
+# Target rules for targets named mlx90640-reader
+
+# Build rule for target.
+mlx90640-reader: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mlx90640-reader
+.PHONY : mlx90640-reader
+
+# fast build rule for target.
+mlx90640-reader/fast:
+	$(MAKE) $(MAKESILENT) -f mlx90640-reader/CMakeFiles/mlx90640-reader.dir/build.make mlx90640-reader/CMakeFiles/mlx90640-reader.dir/build
+.PHONY : mlx90640-reader/fast
+
+unit-tests/test_i2cUtils.o: unit-tests/test_i2cUtils.cpp.o
+.PHONY : unit-tests/test_i2cUtils.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/thermal_viewer.dir/build.make CMakeFiles/thermal_viewer.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+unit-tests/test_i2cUtils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_i2cUtils.dir/build.make CMakeFiles/test_i2cUtils.dir/unit-tests/test_i2cUtils.cpp.o
+.PHONY : unit-tests/test_i2cUtils.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+unit-tests/test_i2cUtils.i: unit-tests/test_i2cUtils.cpp.i
+.PHONY : unit-tests/test_i2cUtils.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/thermal_viewer.dir/build.make CMakeFiles/thermal_viewer.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+unit-tests/test_i2cUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_i2cUtils.dir/build.make CMakeFiles/test_i2cUtils.dir/unit-tests/test_i2cUtils.cpp.i
+.PHONY : unit-tests/test_i2cUtils.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+unit-tests/test_i2cUtils.s: unit-tests/test_i2cUtils.cpp.s
+.PHONY : unit-tests/test_i2cUtils.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/thermal_viewer.dir/build.make CMakeFiles/thermal_viewer.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+unit-tests/test_i2cUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_i2cUtils.dir/build.make CMakeFiles/test_i2cUtils.dir/unit-tests/test_i2cUtils.cpp.s
+.PHONY : unit-tests/test_i2cUtils.cpp.s
 
 # Help Target
 help:
@@ -161,10 +187,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... thermal_viewer"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... duosight"
+	@echo "... mlx90640-reader"
+	@echo "... test_i2cUtils"
+	@echo "... unit-tests/test_i2cUtils.o"
+	@echo "... unit-tests/test_i2cUtils.i"
+	@echo "... unit-tests/test_i2cUtils.s"
 .PHONY : help
 
 

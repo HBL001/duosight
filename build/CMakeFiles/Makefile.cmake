@@ -108,6 +108,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.28.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
+  "/workspace/libduosight/CMakeLists.txt"
+  "/workspace/mlx90640-reader/CMakeLists.txt"
   )
 
 # The corresponding makefile is:
@@ -124,9 +126,13 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.28.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "libduosight/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "mlx90640-reader/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/thermal_viewer.dir/DependInfo.cmake"
+  "CMakeFiles/test_i2cUtils.dir/DependInfo.cmake"
+  "libduosight/CMakeFiles/duosight.dir/DependInfo.cmake"
+  "mlx90640-reader/CMakeFiles/mlx90640-reader.dir/DependInfo.cmake"
   )

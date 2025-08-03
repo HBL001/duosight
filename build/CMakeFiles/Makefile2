@@ -63,42 +63,129 @@ CMAKE_BINARY_DIR = /workspace/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/thermal_viewer.dir/all
+all: CMakeFiles/test_i2cUtils.dir/all
+all: libduosight/all
+all: mlx90640-reader/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: libduosight/preinstall
+preinstall: mlx90640-reader/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/thermal_viewer.dir/clean
+clean: CMakeFiles/test_i2cUtils.dir/clean
+clean: libduosight/clean
+clean: mlx90640-reader/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/thermal_viewer.dir
+# Directory level rules for directory libduosight
+
+# Recursive "all" directory target.
+libduosight/all: libduosight/CMakeFiles/duosight.dir/all
+.PHONY : libduosight/all
+
+# Recursive "preinstall" directory target.
+libduosight/preinstall:
+.PHONY : libduosight/preinstall
+
+# Recursive "clean" directory target.
+libduosight/clean: libduosight/CMakeFiles/duosight.dir/clean
+.PHONY : libduosight/clean
+
+#=============================================================================
+# Directory level rules for directory mlx90640-reader
+
+# Recursive "all" directory target.
+mlx90640-reader/all: mlx90640-reader/CMakeFiles/mlx90640-reader.dir/all
+.PHONY : mlx90640-reader/all
+
+# Recursive "preinstall" directory target.
+mlx90640-reader/preinstall:
+.PHONY : mlx90640-reader/preinstall
+
+# Recursive "clean" directory target.
+mlx90640-reader/clean: mlx90640-reader/CMakeFiles/mlx90640-reader.dir/clean
+.PHONY : mlx90640-reader/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_i2cUtils.dir
 
 # All Build rule for target.
-CMakeFiles/thermal_viewer.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/thermal_viewer.dir/build.make CMakeFiles/thermal_viewer.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/thermal_viewer.dir/build.make CMakeFiles/thermal_viewer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=1,2 "Built target thermal_viewer"
-.PHONY : CMakeFiles/thermal_viewer.dir/all
+CMakeFiles/test_i2cUtils.dir/all: libduosight/CMakeFiles/duosight.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_i2cUtils.dir/build.make CMakeFiles/test_i2cUtils.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_i2cUtils.dir/build.make CMakeFiles/test_i2cUtils.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=8,9 "Built target test_i2cUtils"
+.PHONY : CMakeFiles/test_i2cUtils.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/thermal_viewer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/thermal_viewer.dir/all
+CMakeFiles/test_i2cUtils.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_i2cUtils.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 0
-.PHONY : CMakeFiles/thermal_viewer.dir/rule
+.PHONY : CMakeFiles/test_i2cUtils.dir/rule
 
 # Convenience name for target.
-thermal_viewer: CMakeFiles/thermal_viewer.dir/rule
-.PHONY : thermal_viewer
+test_i2cUtils: CMakeFiles/test_i2cUtils.dir/rule
+.PHONY : test_i2cUtils
 
 # clean rule for target.
-CMakeFiles/thermal_viewer.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/thermal_viewer.dir/build.make CMakeFiles/thermal_viewer.dir/clean
-.PHONY : CMakeFiles/thermal_viewer.dir/clean
+CMakeFiles/test_i2cUtils.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_i2cUtils.dir/build.make CMakeFiles/test_i2cUtils.dir/clean
+.PHONY : CMakeFiles/test_i2cUtils.dir/clean
+
+#=============================================================================
+# Target rules for target libduosight/CMakeFiles/duosight.dir
+
+# All Build rule for target.
+libduosight/CMakeFiles/duosight.dir/all:
+	$(MAKE) $(MAKESILENT) -f libduosight/CMakeFiles/duosight.dir/build.make libduosight/CMakeFiles/duosight.dir/depend
+	$(MAKE) $(MAKESILENT) -f libduosight/CMakeFiles/duosight.dir/build.make libduosight/CMakeFiles/duosight.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=1,2,3,4 "Built target duosight"
+.PHONY : libduosight/CMakeFiles/duosight.dir/all
+
+# Build rule for subdir invocation for target.
+libduosight/CMakeFiles/duosight.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libduosight/CMakeFiles/duosight.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 0
+.PHONY : libduosight/CMakeFiles/duosight.dir/rule
+
+# Convenience name for target.
+duosight: libduosight/CMakeFiles/duosight.dir/rule
+.PHONY : duosight
+
+# clean rule for target.
+libduosight/CMakeFiles/duosight.dir/clean:
+	$(MAKE) $(MAKESILENT) -f libduosight/CMakeFiles/duosight.dir/build.make libduosight/CMakeFiles/duosight.dir/clean
+.PHONY : libduosight/CMakeFiles/duosight.dir/clean
+
+#=============================================================================
+# Target rules for target mlx90640-reader/CMakeFiles/mlx90640-reader.dir
+
+# All Build rule for target.
+mlx90640-reader/CMakeFiles/mlx90640-reader.dir/all: libduosight/CMakeFiles/duosight.dir/all
+	$(MAKE) $(MAKESILENT) -f mlx90640-reader/CMakeFiles/mlx90640-reader.dir/build.make mlx90640-reader/CMakeFiles/mlx90640-reader.dir/depend
+	$(MAKE) $(MAKESILENT) -f mlx90640-reader/CMakeFiles/mlx90640-reader.dir/build.make mlx90640-reader/CMakeFiles/mlx90640-reader.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=5,6,7 "Built target mlx90640-reader"
+.PHONY : mlx90640-reader/CMakeFiles/mlx90640-reader.dir/all
+
+# Build rule for subdir invocation for target.
+mlx90640-reader/CMakeFiles/mlx90640-reader.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mlx90640-reader/CMakeFiles/mlx90640-reader.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 0
+.PHONY : mlx90640-reader/CMakeFiles/mlx90640-reader.dir/rule
+
+# Convenience name for target.
+mlx90640-reader: mlx90640-reader/CMakeFiles/mlx90640-reader.dir/rule
+.PHONY : mlx90640-reader
+
+# clean rule for target.
+mlx90640-reader/CMakeFiles/mlx90640-reader.dir/clean:
+	$(MAKE) $(MAKESILENT) -f mlx90640-reader/CMakeFiles/mlx90640-reader.dir/build.make mlx90640-reader/CMakeFiles/mlx90640-reader.dir/clean
+.PHONY : mlx90640-reader/CMakeFiles/mlx90640-reader.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

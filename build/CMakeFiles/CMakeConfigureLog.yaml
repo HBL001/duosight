@@ -5,7 +5,7 @@ events:
     kind: "message-v1"
     backtrace:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:228 (message)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       The target system is: Linux -  - aarch64
       The host system is: Linux - 5.15.146.1-microsoft-standard-WSL2 - x86_64
@@ -15,7 +15,7 @@ events:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
       Compiler: /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc -march=armv8-a+crypto;-mbranch-protection=standard;-fstack-protector-strong;-O2;-D_FORTIFY_SOURCE=2;-Wformat;-Wformat-security;-Werror=format-security;--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux
@@ -37,7 +37,7 @@ events:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
       Compiler: /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++ -march=armv8-a+crypto;-mbranch-protection=standard;-fstack-protector-strong;-O2;-D_FORTIFY_SOURCE=2;-Wformat;-Wformat-security;-Werror=format-security;--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux
@@ -58,12 +58,12 @@ events:
     backtrace:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:62 (try_compile)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/workspace/build/CMakeFiles/CMakeScratch/TryCompile-UAfxXJ"
-      binary: "/workspace/build/CMakeFiles/CMakeScratch/TryCompile-UAfxXJ"
+      source: "/workspace/build/CMakeFiles/CMakeScratch/TryCompile-yofBCa"
+      binary: "/workspace/build/CMakeFiles/CMakeScratch/TryCompile-yofBCa"
     cmakeVariables:
       CMAKE_C_FLAGS: " -O2 -g -feliminate-unused-debug-types "
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -73,13 +73,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-UAfxXJ'
+        Change Dir: '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-yofBCa'
         
-        Run Build Command(s): /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_720d5/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_720d5.dir/build.make CMakeFiles/cmTC_720d5.dir/build
-        gmake[1]: Entering directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-UAfxXJ'
-        Building C object CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o
-        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux   -O2 -g -feliminate-unused-debug-types     -v -o CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o -c /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_975b3/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_975b3.dir/build.make CMakeFiles/cmTC_975b3.dir/build
+        gmake[1]: Entering directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-yofBCa'
+        Building C object CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o
+        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux   -O2 -g -feliminate-unused-debug-types     -v -o CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o -c /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc
         Target: aarch64-tdx-linux
@@ -87,8 +87,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 13.4.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_720d5.dir/'
-         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/cc1 -quiet -v -isysroot /opt/sdk/sysroots/armv8a-tdx-linux -D _FORTIFY_SOURCE=2 /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_720d5.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=armv8-a+crypto -mbranch-protection=standard -mlittle-endian -mabi=lp64 -g -O2 -O2 -Wformat=1 -Wformat-security -Werror=format-security -version -fstack-protector-strong -feliminate-unused-debug-types -o /tmp/cclDn9on.s
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_975b3.dir/'
+         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/cc1 -quiet -v -isysroot /opt/sdk/sysroots/armv8a-tdx-linux -D _FORTIFY_SOURCE=2 /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_975b3.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=armv8-a+crypto -mbranch-protection=standard -mlittle-endian -mabi=lp64 -g -O2 -O2 -Wformat=1 -Wformat-security -Werror=format-security -version -fstack-protector-strong -feliminate-unused-debug-types -o /tmp/ccCBdixZ.s
         GNU C17 (GCC) version 13.4.0 (aarch64-tdx-linux)
         	compiled by GNU C version 13.4.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version none
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -102,15 +102,15 @@ events:
          /opt/sdk/sysroots/armv8a-tdx-linux/usr/include/
         End of search list.
         Compiler executable checksum: e1ceefbd0843c78d5809a5ba8ab20a7c
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_720d5.dir/'
-         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/as -v --gdwarf-5 -EL -march=armv8-a+crypto -mabi=lp64 -o CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o /tmp/cclDn9on.s
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_975b3.dir/'
+         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/as -v --gdwarf-5 -EL -march=armv8-a+crypto -mabi=lp64 -o CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o /tmp/ccCBdixZ.s
         GNU assembler version 2.42.0 (aarch64-tdx-linux) using BFD version (GNU Binutils) 2.42.0.20240723
         COMPILER_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/
         LIBRARY_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_720d5
-        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_720d5.dir/link.txt --verbose=1
-        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux  -O2 -g -feliminate-unused-debug-types   -Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed  -Wl,-z,relro,-z,now -v CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o -o cmTC_720d5 
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_975b3
+        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_975b3.dir/link.txt --verbose=1
+        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux  -O2 -g -feliminate-unused-debug-types   -Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed  -Wl,-z,relro,-z,now -v CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o -o cmTC_975b3 
         Using built-in specs.
         COLLECT_GCC=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc
         COLLECT_LTO_WRAPPER=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper
@@ -121,10 +121,10 @@ events:
         gcc version 13.4.0 (GCC) 
         COMPILER_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/
         LIBRARY_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_720d5' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_720d5.'
-         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2 -plugin /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so -plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccV778TC.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --build-id --eh-frame-hdr --hash-style=gnu -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -pie -o cmTC_720d5 /opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o -L/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib -O1 --hash-style=gnu --as-needed -z relro -z now CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtendS.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crtn.o
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_720d5' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_720d5.'
-        gmake[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-UAfxXJ'
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_975b3' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_975b3.'
+         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2 -plugin /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so -plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccg4gisb.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --build-id --eh-frame-hdr --hash-style=gnu -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -pie -o cmTC_975b3 /opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o -L/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib -O1 --hash-style=gnu --as-needed -z relro -z now CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtendS.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crtn.o
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_975b3' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_975b3.'
+        gmake[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-yofBCa'
         
       exitCode: 0
   -
@@ -132,7 +132,7 @@ events:
     backtrace:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:132 (message)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Parsed C implicit include dir info: rv=done
         found start of include info
@@ -154,17 +154,17 @@ events:
     backtrace:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:164 (message)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(aarch64-tdx-linux-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-UAfxXJ']
+        ignore line: [Change Dir: '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-yofBCa']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_720d5/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_720d5.dir/build.make CMakeFiles/cmTC_720d5.dir/build]
-        ignore line: [gmake[1]: Entering directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-UAfxXJ']
-        ignore line: [Building C object CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux   -O2 -g -feliminate-unused-debug-types     -v -o CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o -c /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_975b3/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_975b3.dir/build.make CMakeFiles/cmTC_975b3.dir/build]
+        ignore line: [gmake[1]: Entering directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-yofBCa']
+        ignore line: [Building C object CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux   -O2 -g -feliminate-unused-debug-types     -v -o CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o -c /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc]
         ignore line: [Target: aarch64-tdx-linux]
@@ -172,8 +172,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 13.4.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_720d5.dir/']
-        ignore line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/cc1 -quiet -v -isysroot /opt/sdk/sysroots/armv8a-tdx-linux -D _FORTIFY_SOURCE=2 /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_720d5.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=armv8-a+crypto -mbranch-protection=standard -mlittle-endian -mabi=lp64 -g -O2 -O2 -Wformat=1 -Wformat-security -Werror=format-security -version -fstack-protector-strong -feliminate-unused-debug-types -o /tmp/cclDn9on.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_975b3.dir/']
+        ignore line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/cc1 -quiet -v -isysroot /opt/sdk/sysroots/armv8a-tdx-linux -D _FORTIFY_SOURCE=2 /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_975b3.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=armv8-a+crypto -mbranch-protection=standard -mlittle-endian -mabi=lp64 -g -O2 -O2 -Wformat=1 -Wformat-security -Werror=format-security -version -fstack-protector-strong -feliminate-unused-debug-types -o /tmp/ccCBdixZ.s]
         ignore line: [GNU C17 (GCC) version 13.4.0 (aarch64-tdx-linux)]
         ignore line: [	compiled by GNU C version 13.4.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version none]
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
@@ -187,15 +187,15 @@ events:
         ignore line: [ /opt/sdk/sysroots/armv8a-tdx-linux/usr/include/]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: e1ceefbd0843c78d5809a5ba8ab20a7c]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_720d5.dir/']
-        ignore line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/as -v --gdwarf-5 -EL -march=armv8-a+crypto -mabi=lp64 -o CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o /tmp/cclDn9on.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_975b3.dir/']
+        ignore line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/as -v --gdwarf-5 -EL -march=armv8-a+crypto -mabi=lp64 -o CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o /tmp/ccCBdixZ.s]
         ignore line: [GNU assembler version 2.42.0 (aarch64-tdx-linux) using BFD version (GNU Binutils) 2.42.0.20240723]
         ignore line: [COMPILER_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/]
         ignore line: [LIBRARY_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_720d5]
-        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_720d5.dir/link.txt --verbose=1]
-        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux  -O2 -g -feliminate-unused-debug-types   -Wl -O1 -Wl --hash-style=gnu -Wl --as-needed  -Wl -z relro -z now -v CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o -o cmTC_720d5 ]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_975b3]
+        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_975b3.dir/link.txt --verbose=1]
+        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux  -O2 -g -feliminate-unused-debug-types   -Wl -O1 -Wl --hash-style=gnu -Wl --as-needed  -Wl -z relro -z now -v CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o -o cmTC_975b3 ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-gcc]
         ignore line: [COLLECT_LTO_WRAPPER=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper]
@@ -206,13 +206,13 @@ events:
         ignore line: [gcc version 13.4.0 (GCC) ]
         ignore line: [COMPILER_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/]
         ignore line: [LIBRARY_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_720d5' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_720d5.']
-        link line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2 -plugin /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so -plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccV778TC.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --build-id --eh-frame-hdr --hash-style=gnu -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -pie -o cmTC_720d5 /opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o -L/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib -O1 --hash-style=gnu --as-needed -z relro -z now CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtendS.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_975b3' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_975b3.']
+        link line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2 -plugin /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so -plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccg4gisb.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --build-id --eh-frame-hdr --hash-style=gnu -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -pie -o cmTC_975b3 /opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o -L/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib -O1 --hash-style=gnu --as-needed -z relro -z now CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtendS.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crtn.o]
           arg [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccV778TC.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccg4gisb.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -229,7 +229,7 @@ events:
           arg [-maarch64linux] ==> ignore
           arg [-pie] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_720d5] ==> ignore
+          arg [cmTC_975b3] ==> ignore
           arg [/opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o] ==> obj [/opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o]
           arg [/opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o] ==> obj [/opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o]
           arg [/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o] ==> obj [/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o]
@@ -243,7 +243,7 @@ events:
           arg [--as-needed] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-znow] ==> ignore
-          arg [CMakeFiles/cmTC_720d5.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_975b3.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -273,12 +273,12 @@ events:
     backtrace:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:62 (try_compile)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/workspace/build/CMakeFiles/CMakeScratch/TryCompile-qyjsGk"
-      binary: "/workspace/build/CMakeFiles/CMakeScratch/TryCompile-qyjsGk"
+      source: "/workspace/build/CMakeFiles/CMakeScratch/TryCompile-eExaBL"
+      binary: "/workspace/build/CMakeFiles/CMakeScratch/TryCompile-eExaBL"
     cmakeVariables:
       CMAKE_CXX_FLAGS: " -O2 -g -feliminate-unused-debug-types "
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -288,13 +288,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-qyjsGk'
+        Change Dir: '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-eExaBL'
         
-        Run Build Command(s): /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d52fe/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_d52fe.dir/build.make CMakeFiles/cmTC_d52fe.dir/build
-        gmake[1]: Entering directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-qyjsGk'
-        Building CXX object CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o
-        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux   -O2 -g -feliminate-unused-debug-types     -v -o CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o -c /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2f53f/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_2f53f.dir/build.make CMakeFiles/cmTC_2f53f.dir/build
+        gmake[1]: Entering directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-eExaBL'
+        Building CXX object CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o
+        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux   -O2 -g -feliminate-unused-debug-types   -std=gnu++17   -v -o CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o -c /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++
         Target: aarch64-tdx-linux
@@ -302,8 +302,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 13.4.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_d52fe.dir/'
-         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/cc1plus -quiet -v -isysroot /opt/sdk/sysroots/armv8a-tdx-linux -D_GNU_SOURCE -D _FORTIFY_SOURCE=2 /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_d52fe.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=armv8-a+crypto -mbranch-protection=standard -mlittle-endian -mabi=lp64 -g -O2 -O2 -Wformat=1 -Wformat-security -Werror=format-security -version -fstack-protector-strong -feliminate-unused-debug-types -o /tmp/ccZ1Ouj4.s
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_2f53f.dir/'
+         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/cc1plus -quiet -v -isysroot /opt/sdk/sysroots/armv8a-tdx-linux -D_GNU_SOURCE -D _FORTIFY_SOURCE=2 /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_2f53f.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=armv8-a+crypto -mbranch-protection=standard -mlittle-endian -mabi=lp64 -g -O2 -O2 -Wformat=1 -Wformat-security -Werror=format-security -std=gnu++17 -version -fstack-protector-strong -feliminate-unused-debug-types -o /tmp/ccYr3Mxk.s
         GNU C++17 (GCC) version 13.4.0 (aarch64-tdx-linux)
         	compiled by GNU C version 13.4.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version none
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -320,15 +320,15 @@ events:
          /opt/sdk/sysroots/armv8a-tdx-linux/usr/include/
         End of search list.
         Compiler executable checksum: 3a06f4cc6f0f40b7e69c83c1dcd4d520
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_d52fe.dir/'
-         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/as -v --gdwarf-5 -EL -march=armv8-a+crypto -mabi=lp64 -o CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccZ1Ouj4.s
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_2f53f.dir/'
+         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/as -v --gdwarf-5 -EL -march=armv8-a+crypto -mabi=lp64 -o CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccYr3Mxk.s
         GNU assembler version 2.42.0 (aarch64-tdx-linux) using BFD version (GNU Binutils) 2.42.0.20240723
         COMPILER_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/
         LIBRARY_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_d52fe
-        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d52fe.dir/link.txt --verbose=1
-        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux  -O2 -g -feliminate-unused-debug-types   -Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed  -Wl,-z,relro,-z,now -v CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_d52fe 
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_2f53f
+        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f53f.dir/link.txt --verbose=1
+        /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux  -O2 -g -feliminate-unused-debug-types   -Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed  -Wl,-z,relro,-z,now -v CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_2f53f 
         Using built-in specs.
         COLLECT_GCC=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++
         COLLECT_LTO_WRAPPER=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper
@@ -339,10 +339,10 @@ events:
         gcc version 13.4.0 (GCC) 
         COMPILER_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/
         LIBRARY_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_d52fe' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_d52fe.'
-         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2 -plugin /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so -plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQgyQmg.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --build-id --eh-frame-hdr --hash-style=gnu -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -pie -o cmTC_d52fe /opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o -L/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib -O1 --hash-style=gnu --as-needed -z relro -z now CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtendS.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crtn.o
-        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_d52fe' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_d52fe.'
-        gmake[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-qyjsGk'
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_2f53f' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_2f53f.'
+         /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2 -plugin /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so -plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccs6iuh6.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --build-id --eh-frame-hdr --hash-style=gnu -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -pie -o cmTC_2f53f /opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o -L/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib -O1 --hash-style=gnu --as-needed -z relro -z now CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtendS.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crtn.o
+        COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_2f53f' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_2f53f.'
+        gmake[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-eExaBL'
         
       exitCode: 0
   -
@@ -350,7 +350,7 @@ events:
     backtrace:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:132 (message)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Parsed CXX implicit include dir info: rv=done
         found start of include info
@@ -378,17 +378,17 @@ events:
     backtrace:
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:164 (message)"
       - "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(aarch64-tdx-linux-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-qyjsGk']
+        ignore line: [Change Dir: '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-eExaBL']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d52fe/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_d52fe.dir/build.make CMakeFiles/cmTC_d52fe.dir/build]
-        ignore line: [gmake[1]: Entering directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-qyjsGk']
-        ignore line: [Building CXX object CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux   -O2 -g -feliminate-unused-debug-types     -v -o CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o -c /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2f53f/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_2f53f.dir/build.make CMakeFiles/cmTC_2f53f.dir/build]
+        ignore line: [gmake[1]: Entering directory '/workspace/build/CMakeFiles/CMakeScratch/TryCompile-eExaBL']
+        ignore line: [Building CXX object CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux   -O2 -g -feliminate-unused-debug-types   -std=gnu++17   -v -o CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o -c /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++]
         ignore line: [Target: aarch64-tdx-linux]
@@ -396,8 +396,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 13.4.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_d52fe.dir/']
-        ignore line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/cc1plus -quiet -v -isysroot /opt/sdk/sysroots/armv8a-tdx-linux -D_GNU_SOURCE -D _FORTIFY_SOURCE=2 /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_d52fe.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=armv8-a+crypto -mbranch-protection=standard -mlittle-endian -mabi=lp64 -g -O2 -O2 -Wformat=1 -Wformat-security -Werror=format-security -version -fstack-protector-strong -feliminate-unused-debug-types -o /tmp/ccZ1Ouj4.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_2f53f.dir/']
+        ignore line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/cc1plus -quiet -v -isysroot /opt/sdk/sysroots/armv8a-tdx-linux -D_GNU_SOURCE -D _FORTIFY_SOURCE=2 /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_2f53f.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=armv8-a+crypto -mbranch-protection=standard -mlittle-endian -mabi=lp64 -g -O2 -O2 -Wformat=1 -Wformat-security -Werror=format-security -std=gnu++17 -version -fstack-protector-strong -feliminate-unused-debug-types -o /tmp/ccYr3Mxk.s]
         ignore line: [GNU C++17 (GCC) version 13.4.0 (aarch64-tdx-linux)]
         ignore line: [	compiled by GNU C version 13.4.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version none]
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
@@ -414,15 +414,15 @@ events:
         ignore line: [ /opt/sdk/sysroots/armv8a-tdx-linux/usr/include/]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 3a06f4cc6f0f40b7e69c83c1dcd4d520]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_d52fe.dir/']
-        ignore line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/as -v --gdwarf-5 -EL -march=armv8-a+crypto -mabi=lp64 -o CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccZ1Ouj4.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_2f53f.dir/']
+        ignore line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/as -v --gdwarf-5 -EL -march=armv8-a+crypto -mabi=lp64 -o CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccYr3Mxk.s]
         ignore line: [GNU assembler version 2.42.0 (aarch64-tdx-linux) using BFD version (GNU Binutils) 2.42.0.20240723]
         ignore line: [COMPILER_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/]
         ignore line: [LIBRARY_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_d52fe]
-        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d52fe.dir/link.txt --verbose=1]
-        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux  -O2 -g -feliminate-unused-debug-types   -Wl -O1 -Wl --hash-style=gnu -Wl --as-needed  -Wl -z relro -z now -v CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_d52fe ]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_2f53f]
+        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f53f.dir/link.txt --verbose=1]
+        ignore line: [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++   -march=armv8-a+crypto -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux  -O2 -g -feliminate-unused-debug-types   -Wl -O1 -Wl --hash-style=gnu -Wl --as-needed  -Wl -z relro -z now -v CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_2f53f ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/bin/aarch64-tdx-linux/aarch64-tdx-linux-g++]
         ignore line: [COLLECT_LTO_WRAPPER=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper]
@@ -433,13 +433,13 @@ events:
         ignore line: [gcc version 13.4.0 (GCC) ]
         ignore line: [COMPILER_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/]
         ignore line: [LIBRARY_PATH=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/lib/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0/:/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_d52fe' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_d52fe.']
-        link line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2 -plugin /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so -plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQgyQmg.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --build-id --eh-frame-hdr --hash-style=gnu -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -pie -o cmTC_d52fe /opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o -L/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib -O1 --hash-style=gnu --as-needed -z relro -z now CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtendS.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=armv8-a+crypto' '-mbranch-protection=standard' '-fstack-protector-strong' '-O2' '-D' '_FORTIFY_SOURCE=2' '-Wformat=1' '-Wformat-security' '-Werror=format-security' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '--sysroot=/opt/sdk/sysroots/armv8a-tdx-linux' '-O2' '-g' '-feliminate-unused-debug-types' '-v' '-o' 'cmTC_2f53f' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_2f53f.']
+        link line: [ /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2 -plugin /opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so -plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccs6iuh6.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/sdk/sysroots/armv8a-tdx-linux --build-id --eh-frame-hdr --hash-style=gnu -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -pie -o cmTC_2f53f /opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o -L/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/lib/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/lib -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib/aarch64-tdx-linux/13.4.0 -L/opt/sdk/sysroots/armv8a-tdx-linux/usr/lib -O1 --hash-style=gnu --as-needed -z relro -z now CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtendS.o /opt/sdk/sysroots/armv8a-tdx-linux/lib/crtn.o]
           arg [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/libexec/aarch64-tdx-linux/gcc/aarch64-tdx-linux/13.4.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccQgyQmg.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccs6iuh6.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -456,7 +456,7 @@ events:
           arg [-maarch64linux] ==> ignore
           arg [-pie] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_d52fe] ==> ignore
+          arg [cmTC_2f53f] ==> ignore
           arg [/opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o] ==> obj [/opt/sdk/sysroots/armv8a-tdx-linux/lib/Scrt1.o]
           arg [/opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o] ==> obj [/opt/sdk/sysroots/armv8a-tdx-linux/lib/crti.o]
           arg [/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o] ==> obj [/opt/sdk/sysroots/armv8a-tdx-linux/lib/aarch64-tdx-linux/13.4.0/crtbeginS.o]
@@ -470,7 +470,7 @@ events:
           arg [--as-needed] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-znow] ==> ignore
-          arg [CMakeFiles/cmTC_d52fe.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_2f53f.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]

@@ -19,7 +19,7 @@ int main() {
     using namespace duosight;
 
     // Change this to an intentionally missing bus to test failure handling
-    const std::string device = "/dev/i2c-9";
+    const std::string device = "/dev/i2c-9";  // This is designed to go BOOM because we dont have i2c-9
     const uint8_t dummyAddr = 0x33;
 
     I2cDevice dev(device, dummyAddr);

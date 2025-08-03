@@ -1,3 +1,9 @@
-/workspace/build/CMakeFiles/thermal_viewer.dir
+/workspace/build/CMakeFiles/test_i2cUtils.dir
 /workspace/build/CMakeFiles/edit_cache.dir
 /workspace/build/CMakeFiles/rebuild_cache.dir
+/workspace/build/libduosight/CMakeFiles/duosight.dir
+/workspace/build/libduosight/CMakeFiles/edit_cache.dir
+/workspace/build/libduosight/CMakeFiles/rebuild_cache.dir
+/workspace/build/mlx90640-reader/CMakeFiles/mlx90640-reader.dir
+/workspace/build/mlx90640-reader/CMakeFiles/edit_cache.dir
+/workspace/build/mlx90640-reader/CMakeFiles/rebuild_cache.dir
