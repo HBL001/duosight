@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.10)
-project(thermal_viewer)
-
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(thermal_viewer src/main.cpp)
+cmake_minimum_required(VERSION 3.16)
+project(duosight)
+add_subdirectory(libduosight)
+add_subdirectory(mlx90640-reader)
