@@ -18,6 +18,14 @@
 #include <vector>
 #include <memory>
 
+#include "MLX90640_API.h"
+
+#ifndef MLX90640_PARAMS_SIZE
+#define MLX90640_PARAMS_SIZE 1664
+#endif
+
+
+
 namespace duosight {
 
 class MLX90640Reader {
@@ -35,8 +43,9 @@ private:
     uint8_t address_;
 
     // Raw EEPROM & calibration data
-    int eepromData_[832];
-    float params_[MLX90640_PARAMS_SIZE];
+    uint16_t eepromData_[832];
+
+    paramsMLX90640 params_[MLX90640_PARAMS_SIZE];
 };
 
 } // namespace duosight

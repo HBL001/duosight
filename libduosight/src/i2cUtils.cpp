@@ -13,6 +13,7 @@
  */
 
 #include "i2cUtils.h"
+#include <linux/i2c.h>  
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>

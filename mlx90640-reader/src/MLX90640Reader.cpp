@@ -11,10 +11,12 @@
  *   Uses the official Melexis API for parameter extraction and temperature conversion.
  */
 
-#include "MLX90640Reader.h"
-#include "MLX90640_API.h"
 #include <iostream>
 #include <cstring>
+#include <unistd.h>
+
+#include "MLX90640Reader.h"
+#include "MLX90640_API.h"
 
 namespace duosight {
 
