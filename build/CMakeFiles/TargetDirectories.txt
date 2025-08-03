@@ -1,0 +1,3 @@
+/workspace/build/CMakeFiles/thermal_viewer.dir
+/workspace/build/CMakeFiles/edit_cache.dir
+/workspace/build/CMakeFiles/rebuild_cache.dir

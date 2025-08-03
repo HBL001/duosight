@@ -1,0 +1,7 @@
+{
+  "cmake.configureSettings": {
+    "CMAKE_TOOLCHAIN_FILE": "/opt/sdk/sysroots/x86_64-tdxsdk-linux/usr/share/cmake/OEToolchainConfig.cmake"
+  },
+  "cmake.generator": "Unix Makefiles",
+  "cmake.buildDirectory": "${workspaceFolder}/build"
+}

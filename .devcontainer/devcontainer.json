@@ -1,0 +1,18 @@
+{
+  "name": "Verdin iMX8MP Dev",
+  "image": "verdin-dev:7.3.0",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools"
+      ]
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "echo 'source /opt/sdk/environment-setup-armv8a-tdx-linux' >> ~/.bashrc"
+}
