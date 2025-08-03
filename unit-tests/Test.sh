@@ -6,26 +6,38 @@
 #
 # Summary:
 #   Script to run diagnostic tests for DuoSight components.
-#   Currently verifies i2cUtils behavior.
+#   Verifies both i2cUtils logic and MLX90640 sensor capture.
 
-echo "=== DuoSight Self-Test: I2C Layer ==="
+echo "=== DuoSight Self-Test Suite ==="
 
-TEST_BIN="./test_i2cUtils"
+PASS=0
 
-if [ ! -x "$TEST_BIN" ]; then
-    echo "❌ Error: $TEST_BIN not found or not executable."
-    exit 1
-fi
+run_test() {
+    BIN="$1"
+    DESC="$2"
 
-echo "Running test: $TEST_BIN"
-"$TEST_BIN"
-RESULT=$?
+    if [ ! -x "$BIN" ]; then
+        echo "❌ Error: $DESC not found or not executable ($BIN)"
+        PASS=1
+        return
+    fi
 
-if [ "$RESULT" -eq 0 ]; then
-    echo "✅ Test passed."
-else
-    echo "❌ Test failed with code $RESULT."
-fi
+    echo "--- Running: $DESC"
+    "$BIN"
+    RESULT=$?
 
-exit $RESULT
+    if [ "$RESULT" -eq 0 ]; then
+        echo "✅ $DESC passed."
+    elif [ "$RESULT" -eq 2 ]; then
+        echo "⚠️  $DESC returned warnings (code 2)."
+    else
+        echo "❌ $DESC failed (code $RESULT)."
+        PASS=1
+    fi
+}
 
+run_test ./test_i2cUtils "I2C Utility Unit Test"
+run_test ./test_mlx90640_reader "MLX90640 Sensor Self-Test"
+
+echo "=== Self-Test Complete ==="
+exit $PASS

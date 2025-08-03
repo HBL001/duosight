@@ -10,6 +10,7 @@ add_subdirectory(mlx90640-reader)
 # Unit test target for i2cUtils
 add_executable(test_i2cUtils
     unit-tests/test_i2cUtils.cpp
+    unit-tests/test_mlx90640_reader.cpp
 )
 
 target_link_libraries(test_i2cUtils
