@@ -5,6 +5,8 @@
   "cmake.generator": "Unix Makefiles",
   "cmake.buildDirectory": "${workspaceFolder}/build",
   "files.associations": {
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "qwidget": "cpp",
+    "qlabel": "cpp"
   }
 }
