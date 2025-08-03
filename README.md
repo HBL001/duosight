@@ -36,11 +36,11 @@ duosight/
 
 ---
 
-## 🤩 MLX90640 Library (Submodule)
+## MLX90640 Library (Submodule)
 
 This project uses the official [mlx90640-library](https://github.com/melexis/mlx90640-library) as a **submodule**.
 
-**Do not modify it.** It will be updated via Git.
+**Never modify it.** It will be updated via Git.
 
 ### 🔁 Cloning This Project
 
