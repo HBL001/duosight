@@ -1,0 +1,22 @@
+#Build artifacts
+build/
+*.o
+*.so
+*.a
+*.swp
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Logs / temp
+*.log
+*.tmp
+
+
