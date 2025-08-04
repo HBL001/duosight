@@ -65,11 +65,16 @@ systemctl stop connman
 systemctl disable connman
 ```
 
-3. **Enable and restart systemd-networkd**:
+3. **Enable systemd-networkd and set the IP**:
 
 ```sh
 systemctl enable systemd-networkd
 systemctl restart systemd-networkd
+
+ip link set end0 up
+ip addr add 192.168.137.10/24 dev end0
+ip route add default via 192.168.137.1
+
 ```
 
 4. **Reboot to verify**:
