@@ -21,15 +21,6 @@ add_executable(test_mlx90640_reader
     unit-tests/test_mlx90640_reader.cpp
     mlx90640-reader/src/MLX90640Reader.cpp
 )
-
-# Unit test: MLX90640Reader (requires its .cpp)
-add_executable(test_i2cUtils.cpp
-    unit-tests/test_mlx90640_reader.cpp
-    mlx90640-reader/src/MLX90640Reader.cpp
-)
-
-
-
 target_link_libraries(test_mlx90640_reader PRIVATE duosight)
 target_include_directories(test_mlx90640_reader PRIVATE
     ${CMAKE_SOURCE_DIR}/libduosight/include
