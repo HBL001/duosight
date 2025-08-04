@@ -2,15 +2,29 @@
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtCore/QTimer>
+#include <QtGui/QImage>
+#include <QtGui/QPainter>
 
 #include "MLX90640Reader.h"
 #include "i2cUtils.h"
 #include "mlx90640Transport.h"
 
+constexpr int WIDTH = 32;
+constexpr int HEIGHT = 24;
+
+QRgb mapTemperatureToColor(float temp, float minT, float maxT) {
+    float t = (temp - minT) / (maxT - minT);
+    t = std::clamp(t, 0.0f, 1.0f);
+    int r = static_cast<int>(255 * t);
+    int b = static_cast<int>(255 * (1.0f - t));
+    return qRgb(r, 0, b);
+}
+
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    // Set up I2C
+    // Setup I2C and sensor
     duosight::I2cDevice i2c("/dev/i2c-3", 0x33);
     if (!i2c.isOpen()) {
         qCritical("❌ I2C open failed (/dev/i2c-3 @ 0x33)");
@@ -18,43 +32,56 @@ int main(int argc, char *argv[]) {
     }
 
     mlx90640_set_i2c_device(&i2c);
-
     duosight::MLX90640Reader sensor("/dev/i2c-3", 0x33);
     if (!sensor.initialize()) {
         qCritical("❌ Sensor init failed");
         return 1;
     }
 
-    std::vector<float> frame;
-    if (!sensor.readFrame(frame)) {
-        qCritical("❌ Frame read failed");
-        return 1;
-    }
-
-    // Compute stats
-    float minT = *std::min_element(frame.begin(), frame.end());
-    float maxT = *std::max_element(frame.begin(), frame.end());
-    float sum = std::accumulate(frame.begin(), frame.end(), 0.0f);
-    float avgT = sum / static_cast<float>(frame.size());
-
-    // GUI
+    // GUI layout
     QWidget window;
     QVBoxLayout *layout = new QVBoxLayout;
+    QLabel *imageLabel = new QLabel;
+    QLabel *infoLabel = new QLabel("📷 Waiting for data...");
 
-    QLabel *labelTitle = new QLabel("<b>DuoSight MLX90640 Sensor</b>");
-    QLabel *labelMin = new QLabel(QString("🌡️ Min: %1 °C").arg(minT, 0, 'f', 2));
-    QLabel *labelMax = new QLabel(QString("🌡️ Max: %1 °C").arg(maxT, 0, 'f', 2));
-    QLabel *labelAvg = new QLabel(QString("📊 Avg: %1 °C").arg(avgT, 0, 'f', 2));
-
-    layout->addWidget(labelTitle);
-    layout->addWidget(labelMin);
-    layout->addWidget(labelMax);
-    layout->addWidget(labelAvg);
+    imageLabel->setMinimumSize(320, 240);  // Upscale for visibility
+    imageLabel->setAlignment(Qt::AlignCenter);
+    layout->addWidget(imageLabel);
+    layout->addWidget(infoLabel);
 
     window.setLayout(layout);
-    window.setWindowTitle("MLX90640 Thermal Info");
-    window.resize(300, 150);
+    window.setWindowTitle("MLX90640 Live Viewer");
     window.show();
+
+    // Live frame update
+    QTimer *timer = new QTimer;
+    QObject::connect(timer, &QTimer::timeout, [&]() {
+        std::vector<float> frame;
+        if (!sensor.readFrame(frame)) {
+            infoLabel->setText("❌ Frame read failed");
+            return;
+        }
+
+        float minT = *std::min_element(frame.begin(), frame.end());
+        float maxT = *std::max_element(frame.begin(), frame.end());
+        float avgT = std::accumulate(frame.begin(), frame.end(), 0.0f) / frame.size();
+
+        QImage img(WIDTH, HEIGHT, QImage::Format_RGB888);
+        for (int i = 0; i < HEIGHT; ++i) {
+            for (int j = 0; j < WIDTH; ++j) {
+                float t = frame[i * WIDTH + j];
+                img.setPixel(j, i, mapTemperatureToColor(t, minT, maxT));
+            }
+        }
+
+        QPixmap pixmap = QPixmap::fromImage(img.scaled(320, 240));
+        imageLabel->setPixmap(pixmap);
+        infoLabel->setText(QString("🌡️ Min: %1 °C | Max: %2 °C | Avg: %3 °C")
+            .arg(minT, 0, 'f', 2)
+            .arg(maxT, 0, 'f', 2)
+            .arg(avgT, 0, 'f', 2));
+    });
+    timer->start(500);  // ~2 fps
 
     return app.exec();
 }
