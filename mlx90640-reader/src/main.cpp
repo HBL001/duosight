@@ -1,3 +1,25 @@
+/**
+ * @file test_mlx90640_gui.cpp
+ * @brief Live thermal image viewer for MLX90640 sensor using Qt5.
+ *
+ * (c) 2025 Highland Biosciences
+ * Author: Dr Richard Day
+ * Email: richard_day@highlandbiosciences.com
+ *
+ * Summary:
+ *   This standalone GUI test acquires thermal frames from the MLX90640
+ *   infrared sensor over I2C and displays them as a color-mapped 32x24
+ *   image using Qt5. The display updates in real time (~5 FPS), and
+ *   min/max/average temperature statistics are shown below the image.
+ *
+ *   It uses the DuoSight I2cDevice class and MLX90640Reader wrapper
+ *   to communicate with the sensor, and renders thermal data using a
+ *   simple blue-to-red linear gradient.
+ *
+ *   Intended for hardware validation and GUI integration testing.
+ */
+
+
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -81,7 +103,7 @@ int main(int argc, char *argv[]) {
             .arg(maxT, 0, 'f', 2)
             .arg(avgT, 0, 'f', 2));
     });
-    timer->start(500);  // ~2 fps
+    timer->start(200);  // ~5 fps
 
     return app.exec();
 }
