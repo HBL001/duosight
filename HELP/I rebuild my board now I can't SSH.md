@@ -1,4 +1,4 @@
-#SSH Troubleshooter
+# SSH Troubleshooter
 
 If you rebuild your Image and reflash the board, you will find that you can nolonger SSH or SCP to it.
 
