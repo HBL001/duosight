@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
             .arg(maxT, 0, 'f', 2)
             .arg(avgT, 0, 'f', 2));
     });
-    timer->start(200);  // ~5 fps
+    timer->start(500);  // ~2 fps for the moment
 
     return app.exec();
 }
