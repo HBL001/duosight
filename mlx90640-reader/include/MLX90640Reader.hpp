@@ -13,12 +13,15 @@
 
 #pragma once
 
-#include "i2cUtils.h"
+
+
 #include <string>
 #include <vector>
 #include <memory>
 
+#include "MLX90640Regs.hpp"
 #include "MLX90640_API.h"
+#include "i2cUtils.hpp"
 
 #ifndef MLX90640_PARAMS_SIZE
 #define MLX90640_PARAMS_SIZE 1664
@@ -30,11 +33,13 @@ namespace duosight {
 
 class MLX90640Reader {
 public:
-    MLX90640Reader(const std::string& i2cPath = "/dev/i2c-1", uint8_t address = 0x33);
+    MLX90640Reader(const std::string& i2cPath = "/dev/i2c-3", uint8_t address = 0x33);
     ~MLX90640Reader();
 
     bool initialize();
     bool readFrame(std::vector<float>& frameData); // 768 floats (32x24)
+
+    bool waitForNewFrame(I2cDevice& i2c, int& subpageOut, int maxRetries, int delayUs);
 
     void printSummary(const std::vector<float>& frameData);
 

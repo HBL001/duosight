@@ -28,12 +28,10 @@
 #include <QtGui/QImage>
 #include <QtGui/QPainter>
 
-#include "MLX90640Reader.h"
-#include "i2cUtils.h"
-#include "mlx90640Transport.h"
+#include "MLX90640Reader.hpp"
+#include "i2cUtils.hpp"
+#include "mlx90640Transport.hpp"
 
-constexpr int WIDTH = 32;
-constexpr int HEIGHT = 24;
 
 QRgb mapTemperatureToColor(float temp, float minT, float maxT) {
     float t = (temp - minT) / (maxT - minT);

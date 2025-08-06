@@ -12,7 +12,7 @@
  *   Intended for use in test environments without real I2C devices.
  */
 
-#include "i2cUtils.h"
+#include "i2cUtils.hpp"
 #include <iostream>
 
 int main() {

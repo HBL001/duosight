@@ -1,6 +1,6 @@
-#include "MLX90640Reader.h"
-#include "i2cUtils.h"
-#include "mlx90640Transport.h"
+#include "MLX90640Reader.hpp"
+#include "i2cUtils.hpp"
+#include "mlx90640Transport.hpp"
 #include <vector>
 #include <iostream>
 #include <cmath>

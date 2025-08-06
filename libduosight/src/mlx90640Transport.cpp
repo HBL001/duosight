@@ -1,4 +1,4 @@
-#include "i2cUtils.h"
+#include "i2cUtils.hpp"
 #include <cstdint>
 #include <cstdio>
 
