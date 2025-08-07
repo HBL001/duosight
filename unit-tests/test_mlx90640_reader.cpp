@@ -1,6 +1,6 @@
 #include "MLX90640Reader.hpp"
 #include "i2cUtils.hpp"
-#include "mlx90640Transport.hpp"
+#include "mlx90640Transport.h"
 #include <vector>
 #include <iostream>
 #include <cmath>
@@ -16,7 +16,7 @@ int main() {
 
     mlx90640_set_i2c_device(&i2c);
 
-    duosight::MLX90640Reader sensor("/dev/i2c-3", 0x33);
+    duosight::MLX90640Reader sensor(i2c, 0x33);
     if (!sensor.initialize()) {
         std::cerr << "[FAIL] Sensor initialization failed" << std::endl;
         return 1;

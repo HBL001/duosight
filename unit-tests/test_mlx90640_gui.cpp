@@ -20,7 +20,7 @@
 
 #include "MLX90640Reader.hpp"
 #include "i2cUtils.hpp"
-#include "mlx90640Transport.hpp"
+#include "mlx90640Transport.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 
     mlx90640_set_i2c_device(&i2c);
 
-    duosight::MLX90640Reader sensor("/dev/i2c-3", 0x33);
+    duosight::MLX90640Reader sensor(i2c, 0x33);
     if (!sensor.initialize()) {
         qCritical("❌ Sensor init failed");
         return 1;
