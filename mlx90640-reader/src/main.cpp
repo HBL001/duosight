@@ -19,6 +19,7 @@
  *   Intended for hardware validation and GUI integration testing.
  */
 
+#include <iostream>
 
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
@@ -29,9 +30,9 @@
 #include <QtGui/QPainter>
 
 #include "MLX90640Reader.hpp"
+#include "MLX90640Regs.hpp"
 #include "i2cUtils.hpp"
-#include "mlx90640Transport.hpp"
-
+#include "mlx90640Transport.h"
 
 QRgb mapTemperatureToColor(float temp, float minT, float maxT) {
     float t = (temp - minT) / (maxT - minT);
@@ -44,15 +45,15 @@ QRgb mapTemperatureToColor(float temp, float minT, float maxT) {
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    // Setup I2C and sensor
-    duosight::I2cDevice i2c("/dev/i2c-3", 0x33);
-    if (!i2c.isOpen()) {
-        qCritical("❌ I2C open failed (/dev/i2c-3 @ 0x33)");
+    // open I2C bus, register MLX90640 device  0x33, makes a handle
+    duosight::I2cDevice bus(duosight::Bus::DEV, duosight::Bus::SLAVE_ADDR);
+    if (!bus.isOpen()) {
+        qCritical("❌ I²C open failed (/dev/i2c-3 @ 0x33)");
         return 1;
     }
 
-    mlx90640_set_i2c_device(&i2c);
-    duosight::MLX90640Reader sensor("/dev/i2c-3", 0x33);
+    // initialise the reader
+    duosight::MLX90640Reader sensor(bus, duosight::Bus::SLAVE_ADDR);
     if (!sensor.initialize()) {
         qCritical("❌ Sensor init failed");
         return 1;
@@ -77,6 +78,7 @@ int main(int argc, char *argv[]) {
     QTimer *timer = new QTimer;
     QObject::connect(timer, &QTimer::timeout, [&]() {
         std::vector<float> frame;
+
         if (!sensor.readFrame(frame)) {
             infoLabel->setText("❌ Frame read failed");
             return;
@@ -86,10 +88,16 @@ int main(int argc, char *argv[]) {
         float maxT = *std::max_element(frame.begin(), frame.end());
         float avgT = std::accumulate(frame.begin(), frame.end(), 0.0f) / frame.size();
 
-        QImage img(WIDTH, HEIGHT, QImage::Format_RGB888);
-        for (int i = 0; i < HEIGHT; ++i) {
-            for (int j = 0; j < WIDTH; ++j) {
-                float t = frame[i * WIDTH + j];
+        QImage img(duosight::Geometry::WIDTH,
+                duosight::Geometry::HEIGHT,
+                QImage::Format_RGB888);
+
+        // Optional: clear to a known background
+        img.fill(qRgb(0, 0, 0));
+
+        for (int i = 0; i < duosight::Geometry::HEIGHT; ++i) {
+            for (int j = 0; j < duosight::Geometry::WIDTH; ++j) {
+                float t = frame[i * duosight::Geometry::WIDTH + j];
                 img.setPixel(j, i, mapTemperatureToColor(t, minT, maxT));
             }
         }
