@@ -21,7 +21,13 @@
 #pragma once
 #include <cstdint>
 
-namespace duosight::mlx90640 {
+namespace duosight
+{
+
+namespace Bus {
+inline constexpr const char* DEV        = "/dev/i2c-3";
+inline constexpr uint8_t     SLAVE_ADDR = 0x33;
+}
 
 // ────────────────────────────────────────────────────────────────
 //  Geometry
@@ -35,7 +41,7 @@ inline constexpr std::size_t HEIGHT = 24;
 //  Poll-loop parameters
 // ────────────────────────────────────────────────────────────────
 namespace Polling {
-inline constexpr int MAX_RETRIES = 20;
+inline constexpr int MAX_RETRIES = 150;
 inline constexpr int DELAY_US    = 5'000;   // 5 ms
 } // namespace Polling
 
@@ -79,11 +85,25 @@ inline constexpr uint16_t DEVICE_BUSY     = 0b0001'0000'0000'0000; // bit 12
 inline constexpr uint16_t RSVD13          = 0b0010'0000'0000'0000; // bit 13
 inline constexpr uint16_t RSVD14          = 0b0100'0000'0000'0000; // bit 14
 inline constexpr uint16_t INTERFACE_ERROR = 0b1000'0000'0000'0000; // bit 15
-
-// Back-compat aliases (keeps older code compiling)
-inline constexpr uint16_t STATUS_REGISTER = REG;
-inline constexpr uint16_t NEW_DATA_MASK   = NEW_DATA_READY;
-inline constexpr uint16_t SUB_FRAME_MASK  = SUBPAGE_BIT0;
 } // namespace Status
 
-} // namespace duosight::mlx90640
+namespace refresh
+{
+    // Mask already shifted to bits 7-5
+    inline constexpr uint16_t MASK   = 0b1110'0000;      // bits 7-5
+
+    // 3-bit codes ( *unshifted* – pass straight to MLX90640_SetRefreshRate )
+    inline constexpr uint8_t  FR0P5  = 0b000;            // 0.5 Hz
+    inline constexpr uint8_t  FR1    = 0b001;            // 1 Hz
+    inline constexpr uint8_t  FR2    = 0b010;            // 2 Hz
+    inline constexpr uint8_t  FR4    = 0b011;            // 4 Hz
+    inline constexpr uint8_t  FR8    = 0b100;            // 8 Hz
+    inline constexpr uint8_t  FR16   = 0b101;            // 16 Hz
+    inline constexpr uint8_t  FR32   = 0b110;            // 32 Hz
+    inline constexpr uint8_t  FR64   = 0b111;            // 64 Hz
+} // namespace refresh
+
+
+
+
+} // namespace duosight
