@@ -1,5 +1,5 @@
 /**
- * @file test_mlx90640_gui.cpp
+ * @file main.cpp
  * @brief Live thermal image viewer for MLX90640 sensor using Qt5.
  *
  * (c) 2025 Highland Biosciences

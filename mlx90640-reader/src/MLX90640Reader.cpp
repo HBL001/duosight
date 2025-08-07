@@ -18,6 +18,7 @@
 #include <chrono>
 #include <array>
 #include <cmath>
+#include <iomanip> 
 
 #include "i2cUtils.hpp"
 #include "MLX90640Reader.hpp"
@@ -133,17 +134,26 @@ bool MLX90640Reader::readFrame(std::vector<float>& frameData) {
         return false;
     }
 
-    // 3) Convert the 768 raw codes → °C
+    // Convert the 768 raw codes → °C
     constexpr size_t W = Geometry::WIDTH, H = Geometry::HEIGHT, N = W*H;
     frameData.resize(N);
     
-    // float Ta = IRParams::AMBIENT_TEMP;  
-       float Ta = MLX90640_GetTa(burst, params_);
-   
-    if (std::isnan(Ta) || Ta < -40.0f || Ta > 125.0f) {
-        std::cerr << "[MLX90640] Calculation failed Ta=" << Ta << " °C - Use " << IRParams::AMBIENT_TEMP << " °C\n";
-        Ta = IRParams::AMBIENT_TEMP;
+    // *** No filtering before this point ***
+    float Ta = MLX90640_GetTa(burst, params_);
+    if (std::isnan(Ta) || std::isinf(Ta)) {
+        std::cerr << "Bad Ta, skipping frame\n";
+        return false;
+    }
+
+    double sum0 = 0, sum1 = 0;
+    for (int idx = 0; idx < 768; ++idx) {
+        bool inSub0 = ((idx / 32 + idx % 32) & 1) == 0;
+        if (inSub0) sum0 += burst[idx];
+        else        sum1 += burst[idx];
         }
+std::cout << "Raw mean sub0=" << sum0 / 384.0
+          << "  sub1=" << sum1 / 384.0 << '\n';
+
 
     MLX90640_CalculateTo(
         burst,             // const uint16_t* raw data[0..767]
@@ -153,30 +163,28 @@ bool MLX90640Reader::readFrame(std::vector<float>& frameData) {
         frameData.data()   // float* output array
     );
 
-    // 4) Apply a 3×3 box-blur to collapse residual chessboard noise
-    std::vector<float> tmp(N);
-    for (size_t r = 0; r < H; ++r) {
-        for (size_t c = 0; c < W; ++c) {
-            float sum = 0;
-            int   cnt = 0;
-            for (int dr = -1; dr <= 1; ++dr) {
-                for (int dc = -1; dc <= 1; ++dc) {
-                    int rr = int(r) + dr, cc = int(c) + dc;
-                    if (rr < 0 || rr >= int(H) || cc < 0 || cc >= int(W))
-                        continue;
-                    sum += frameData[rr * W + cc];
-                    ++cnt;
-                }
-            }
-            tmp[r * W + c] = sum / cnt;
-        }
-    }
-    frameData.swap(tmp);
+
+// -----------------------------------------------------------------------------
+
+sum0 = 0.0;
+sum1 = 0.0;
+
+for (std::size_t idx = 0; idx < 768; ++idx) {
+    bool inSub0 = ((idx / W + idx % W) & 1) == 0;  // chess test
+    if (inSub0) sum0 += frameData[idx];
+    else        sum1 += frameData[idx];
+}
+
+double mean0 = sum0 / 384.0;
+double mean1 = sum1 / 384.0;
+
+std::cout << std::fixed << std::setprecision(3)
+          << "To-mean sub0 = " << mean0
+          << " °C   sub1 = " << mean1
+          << " °C   Δ = "   << (mean0 - mean1) << " °C\n";
 
     return true;
 }
-
-
 
 
 void MLX90640Reader::printSummary(const std::vector<float>& frameData) {
