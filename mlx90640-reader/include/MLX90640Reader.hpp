@@ -1,24 +1,14 @@
-/**
- * @file MLX90640Reader.h
- * @brief High-level interface for MLX90640 thermal sensor.
- *
- * (c) 2025 Highland Biosciences
- * Author: Dr Richard Day
- * Email: richard_day@highlandbiosciences.com
- *
- * Summary:
- *   Wraps the Melexis MLX90640 API and I2C interface to support
- *   initialization and frame capture of thermal image data.
- */
-
+// ────────────────────────────────────────────────────────────────
+// MLX90640Reader.hpp
+// High‑level wrapper around the Melexis MLX90640 API that re‑uses an
+// already‑opened I²C bus handle (duosight::I2cDevice) rather than
+// opening /dev/i2c‑X a second time.
+//
+// © 2025 Highland Biosciences — Dr Richard Day — SPDX‑License‑Identifier: MIT
+// ────────────────────────────────────────────────────────────────
 #pragma once
 
-
-
-#include <string>
 #include <vector>
-#include <memory>
-
 #include "MLX90640Regs.hpp"
 #include "MLX90640_API.h"
 #include "i2cUtils.hpp"
@@ -27,30 +17,34 @@
 #define MLX90640_PARAMS_SIZE 1664
 #endif
 
-
-
 namespace duosight {
 
 class MLX90640Reader {
 public:
-    MLX90640Reader(const std::string& i2cPath = "/dev/i2c-3", uint8_t address = 0x33);
+    MLX90640Reader(I2cDevice &bus, uint8_t address);
     ~MLX90640Reader();
 
-    bool initialize();
-    bool readFrame(std::vector<float>& frameData); // 768 floats (32x24)
+    bool initialize();                                        ///< EEPROM → params
+    bool readFrame(std::vector<float>& frame);                ///< full 32×24
 
-    bool waitForNewFrame(I2cDevice& i2c, int& subpageOut, int maxRetries, int delayUs);
+    // --- low‑level helpers --------------------------------------------
+    bool waitForNewFrame(int& subpageOut);                    ///< non‑blocking
+    bool readSubPage(int subpage, uint16_t *raw);
+    int MLX90640_GrabSubPage(uint8_t sa, uint16_t *frame);
+    int grabSubPage(uint16_t *raw); ///< burst + clear
 
-    void printSummary(const std::vector<float>& frameData);
+    void printSummary(const std::vector<float>& frame) const; ///< debug
 
 private:
-    std::unique_ptr<I2cDevice> i2c_;
-    uint8_t address_;
+    /* The reader does *not* own the bus; caller keeps it alive. */
+    I2cDevice* bus_ {nullptr};
+    uint8_t    address_ {0x33};
 
-    // Raw EEPROM & calibration data
-    uint16_t eepromData_[832];
-
-    paramsMLX90640 params_[MLX90640_PARAMS_SIZE];
+    // Calibration and scratch buffers
+    uint16_t       eepromData_[832] {};
+    paramsMLX90640 params_[MLX90640_PARAMS_SIZE] {};
+    
+    void printSummary(const std::vector<float> &frameData);
 };
 
 } // namespace duosight

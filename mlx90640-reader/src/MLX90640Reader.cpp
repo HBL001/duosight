@@ -16,145 +16,165 @@
 #include <unistd.h>
 #include <thread>
 #include <chrono>
+#include <array>
+#include <cmath>
 
 #include "i2cUtils.hpp"
 #include "MLX90640Reader.hpp"
+#include "MLX90640Regs.hpp"
 #include "MLX90640_API.h"
+#include "mlx90640Transport.h"
 
 namespace duosight {
 
-MLX90640Reader::MLX90640Reader(const std::string& i2cPath, uint8_t address)
-    : address_(address)
+MLX90640Reader::MLX90640Reader(I2cDevice& bus, uint8_t address)
+    : bus_{&bus}, address_{address}
 {
-    i2c_ = std::make_unique<I2cDevice>(i2cPath, address);
+    mlx90640_set_i2c_device(bus_);        
 }
 
 MLX90640Reader::~MLX90640Reader() {}
 
-
-bool MLX90640Reader::initialize() {
-    if (!i2c_ || !i2c_->isOpen()) {
-        std::cerr << "[MLX90640] I2C device not open\n";
+bool MLX90640Reader::initialize()
+{
+    if (!bus_ || !bus_->isOpen()) {
+        std::cerr << "[MLX90640] I²C device not open\n";
         return false;
     }
 
-    std::clog << "[MLX90640] Dumping EEPROM...\n";
+    // 1) Read and parse EEPROM → calibration parameters
     if (MLX90640_DumpEE(address_, eepromData_) != 0) {
-        std::cerr << "[MLX90640] Failed to dump EEPROM\n";
+        std::cerr << "[MLX90640] EEPROM dump failed\n";
         return false;
     }
-
-    std::clog << "[MLX90640] Extracting calibration parameters...\n";
     if (MLX90640_ExtractParameters(eepromData_, params_) != 0) {
-        std::cerr << "[MLX90640] Failed to extract sensor parameters\n";
+        std::cerr << "[MLX90640] Parameter extraction failed\n";
         return false;
     }
 
-    // Set refresh rate (0x00 to 0x07)
-    constexpr int refreshRateCode = 0x05; // 16 Hz
-    if (MLX90640_SetRefreshRate(address_, refreshRateCode) != 0) {
-        std::cerr << "[MLX90640] Failed to set refresh rate to code " << refreshRateCode << "\n";
+    // 2) Set desired refresh rate (2 Hz full-frame → 4 Hz sub-pages)
+    if (MLX90640_SetRefreshRate(address_, refresh::FR2) != 0) {
+        std::cerr << "[MLX90640] Refresh-rate set failed\n";
         return false;
-    } else {
-        std::clog << "[MLX90640] Set refresh rate to " << (1 << (refreshRateCode - 1)) << " Hz\n";
     }
 
-    if (MLX90640_SetChessMode(address_) != 0) {
-        std::cerr << "[MLX90640] Failed to set Chess Mode\n";
+    // 3) Enable chess-pattern (sub-page) mode in Control Register 1 (0x800D)
+    uint16_t ctrl;
+    if (MLX90640_I2CRead(address_, 0x800D, 1, &ctrl) != 0) {
+        std::cerr << "[MLX90640] Read CTRL (0x800D) failed\n";
         return false;
-    } else {
-        std::clog << "[MLX90640] Set Chess Mode\n";
+    }
+    //   • bit 0 = 1 → sub-page mode
+    //   • bit 3 = 0 → auto-repeat off
+    ctrl = (ctrl & ~(1u << 3))   // clear bit-3
+         |  (1u << 0);           // set bit-0
+    if (MLX90640_I2CWrite(address_, 0x800D, ctrl) != 0) {
+        std::cerr << "[MLX90640] Write CTRL (0x800D) failed\n";
+        return false;
     }
 
     return true;
 }
 
 
-bool MLX90640Reader::waitForNewFrame(I2cDevice& i2c, int& subpageOut, int maxRetries, int delayUs) {
-    
-    static int lastSubpage = -1;
-    
-    for (int attempt = 0; attempt < maxRetries; ++attempt) {
-        uint16_t status = 0;
-    
-        if (!i2c.readRegister16(STATUS_REGISTER, status)) {
-            std::cerr << "[MLX90640] Failed to read status register\n";
-            return false;
-        }
+bool MLX90640Reader::waitForNewFrame(int& subpageOut)
+{
+    uint16_t status;
+    if (!bus_->readRegister16(duosight::Status::REG, status))
+        return false;                                 // I²C error
 
-        if (status & NEW_DATA_MASK) {
-            subpageOut = status & SUB_FRAME_MASK; // Bit 0 = subframe number
-            return true;
-        }
+    if (!(status & duosight::Status::NEW_DATA_READY))
+        return false;                                 // nothing new yet
 
-        std::this_thread::sleep_for(std::chrono::microseconds(delayUs));
-    }
-
-    std::cerr << "[MLX90640] Timed out waiting for new data (bit 3)\n";
-    return false;
+    subpageOut = status & duosight::Status::SUBPAGE_BIT0; // 0 or 1
+    
+    return true;                                      // ✔ fresh sub-page
 }
 
-bool MLX90640Reader::readFrame(std::vector<float>& frameData) {
-    static int lastSubpage = -1;
-    static std::vector<float> subframe0(HEIGHT * WIDTH, 0.0f);
-    static std::vector<float> subframe1(HEIGHT * WIDTH, 0.0f);
+bool MLX90640Reader::readSubPage(int subpage, uint16_t* raw) {
+    // 1) Burst-read RAM 0x0400–0x06FF (832 words) into raw[]
+    if (MLX90640_I2CRead(address_, 0x0400, 832, raw) != 0) {
+        return false;
+    }
 
-    if (!i2c_ || !i2c_->isOpen()) {
+    // 2) Clear NEW_DATA_READY (bit-3) and OVERRUN (bit-4) in the STATUS register
+    //    so the sensor can start the next measurement cycle cleanly.
+    const uint16_t clearMask = Status::NEW_DATA_READY | Status::OVERRUN;
+    if (!bus_->writeRegister16(Status::REG, clearMask)) {
+        std::cerr << "[MLX90640] Failed to clear status bits\n";
+        return false;
+    }
+
+    return true;
+}
+
+
+bool MLX90640Reader::readFrame(std::vector<float>& frameData) {
+    // 1) Sanity-check I²C bus
+    if (!bus_ || !bus_->isOpen()) {
         std::cerr << "[MLX90640] I²C device not open\n";
         return false;
     }
 
-    uint16_t raw[WIDTH * HEIGHT + 66]; // 834 words
-    int subpage = -1;
-
-    // 1) Wait for new data (bit 3) and capture which subpage (bit 1)
-    if (!waitForNewFrame(*i2c_, subpage, MAXRETRIES, DELAYUS)) {
-        std::cerr << "[MLX90640] Timed out waiting for new frame\n";
+    // 2) Let Melexis API do the chess-pattern interleave for us
+    //    (returns 832 words: 768 pixels + 64 overhead)
+    constexpr int MAX_TRIES = 150;  // ~750 ms @ 2 Hz
+    uint16_t burst[Geometry::WIDTH * Geometry::HEIGHT + 66];
+    int status = -1;
+    for (int i = 0; i < MAX_TRIES; ++i) {
+        status = MLX90640_GetFrameData(address_, burst);
+        if (status == 0) break;  // both sub-pages read & merged
+        std::this_thread::sleep_for(
+            std::chrono::microseconds(Polling::DELAY_US)
+        );
+    }
+    if (status != 0) {
+        std::cerr << "[MLX90640] GetFrameData timed out (" << status << ")\n";
         return false;
     }
 
-    // 2) If it's the same subpage we already handled, bail out quickly
-    if (subpage == lastSubpage) {
-        std::clog << "[MLX90640] Subpage " << subpage << " already processed, skipping\n";
-        std::this_thread::sleep_for(std::chrono::microseconds(DELAYUS));
-        return false;
-    }
-
-    std::clog << "[MLX90640] New subpage available: " << subpage << "\n";
-
-    // 3) Grab that subframe’s raw data
-    if (MLX90640_GetFrameData(address_, raw) != 0) {
-        std::cerr << "[MLX90640] Failed to read raw frame data\n";
-        return false;
-    }
-
-    // 4) Convert the raw subframe into temperatures
-    auto &dst = (subpage == 0) ? subframe0 : subframe1;
-    MLX90640_CalculateTo(raw, params_, emissivity_, ambientTemp_, dst.data());
+    // 3) Convert the 768 raw codes → °C
+    constexpr size_t W = Geometry::WIDTH, H = Geometry::HEIGHT, N = W*H;
+    frameData.resize(N);
     
-    lastSubpage = subpage;
-
-    // 5) Clear that “new data” bit (bit 3) by writing a 1 to it
-    if (!i2c_->writeRegister16(STATUS_REGISTER, NEW_DATA_MASK)) {
-        std::cerr << "[MLX90640] Failed to clear new-data flag\n";
-    } else {
-        std::clog << "[MLX90640] Cleared new-data flag for subpage " << subpage << "\n";
-    }
-
-    // 6) If we now have both halves, merge them and return true
-    if (subframe0[0] != 0.0f && subframe1[0] != 0.0f) {
-        frameData.resize(HEIGHT * WIDTH);
-        for (size_t i = 0; i < frameData.size(); ++i) {
-            // average the two interleaved chess-pattern subframes
-            frameData[i] = 0.5f * (subframe0[i] + subframe1[i]);
+    // float Ta = IRParams::AMBIENT_TEMP;  
+       float Ta = MLX90640_GetTa(burst, params_);
+   
+    if (std::isnan(Ta) || Ta < -40.0f || Ta > 125.0f) {
+        std::cerr << "[MLX90640] Calculation failed Ta=" << Ta << " °C - Use " << IRParams::AMBIENT_TEMP << " °C\n";
+        Ta = IRParams::AMBIENT_TEMP;
         }
-        return true;
+
+    MLX90640_CalculateTo(
+        burst,             // const uint16_t* raw data[0..767]
+        params_,           // const paramsMLX90640* calibration data
+        IRParams::EMISSIVITY,
+        Ta,                // float ambient temperature
+        frameData.data()   // float* output array
+    );
+
+    // 4) Apply a 3×3 box-blur to collapse residual chessboard noise
+    std::vector<float> tmp(N);
+    for (size_t r = 0; r < H; ++r) {
+        for (size_t c = 0; c < W; ++c) {
+            float sum = 0;
+            int   cnt = 0;
+            for (int dr = -1; dr <= 1; ++dr) {
+                for (int dc = -1; dc <= 1; ++dc) {
+                    int rr = int(r) + dr, cc = int(c) + dc;
+                    if (rr < 0 || rr >= int(H) || cc < 0 || cc >= int(W))
+                        continue;
+                    sum += frameData[rr * W + cc];
+                    ++cnt;
+                }
+            }
+            tmp[r * W + c] = sum / cnt;
+        }
     }
+    frameData.swap(tmp);
 
-    // Not yet: still waiting for the other subframe
-    return false;
+    return true;
 }
-
 
 
 
