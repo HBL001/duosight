@@ -35,6 +35,9 @@ inline constexpr uint8_t     SLAVE_ADDR = 0x33;
 namespace Geometry {
 inline constexpr std::size_t WIDTH  = 32;
 inline constexpr std::size_t HEIGHT = 24;
+inline constexpr int PIXELS = WIDTH * HEIGHT;   // 768
+inline constexpr int TAIL   = 64;               // NOT 64
+inline constexpr int WORDS  = PIXELS + TAIL + 2;    // 834
 } // namespace Geometry
 
 // ────────────────────────────────────────────────────────────────

@@ -30,6 +30,7 @@ public:
     // --- low‑level helpers --------------------------------------------
     bool waitForNewFrame(int& subpageOut);                    ///< non‑blocking
     bool readSubPage(int subpage, uint16_t *raw);
+    bool combineChessTemperatures(const std::array<float, Geometry::PIXELS> &toA, const std::array<float, Geometry::PIXELS> &toB, int subpageA, int subpageB, std::vector<float> &frameData);
     int MLX90640_GrabSubPage(uint8_t sa, uint16_t *frame);
     int grabSubPage(uint16_t *raw); ///< burst + clear
 
@@ -42,9 +43,11 @@ private:
 
     // Calibration and scratch buffers
     uint16_t       eepromData_[832] {};
-    paramsMLX90640 params_[MLX90640_PARAMS_SIZE] {};
+    paramsMLX90640 params_{};
     
     void printSummary(const std::vector<float> &frameData);
 };
+
+static void dumpFrameForToDebug(uint16_t *frame834, const paramsMLX90640 &params, float emissivity, float tr, const char *tag);
 
 } // namespace duosight
