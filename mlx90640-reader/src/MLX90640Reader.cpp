@@ -176,7 +176,6 @@ bool MLX90640Reader::readFrame(std::vector<float> &frameData)
     const int us_per_poll   = Polling::DELAY_US;
     const int max_polls_per = static_cast<int>((ri.subpage_period_s * 1.25f * 1'000'000) / us_per_poll);
     
-    std::clog << "[MLX90640]   Max polls per subpage: " << max_polls_per << "\n";
 
     std::array<uint16_t, Geometry::WORDS> subpage0{};
     std::array<uint16_t, Geometry::WORDS> subpage1{};
@@ -197,11 +196,7 @@ bool MLX90640Reader::readFrame(std::vector<float> &frameData)
     Ta = MLX90640_GetTa(subpage0.data(), &params_);
     std::clog << "[MLX90640] --- Dump first 40 words of subpage0 \n";
     
-    for (int i = 0; i < 40; ++i) {
-        std::clog << std::setw(2) << i << ": " << std::hex << std::showbase
-                  << subpage0[i] << std::dec << " ";
-    }
-    
+        
     std::clog << "\n";
     
     // --- Convert to temperatures ---
@@ -213,14 +208,6 @@ bool MLX90640Reader::readFrame(std::vector<float> &frameData)
                          Ta,
                          subframe0.data());
 
-    std::clog << "[MLX90640] --- Dump first 40 words of To for subpage0 \n";
-
-        for (int i = 0; i < 40; ++i) {
-        std::clog << std::setw(2) << i << ": " << std::hex << std::showbase
-                  << subframe0[i] << std::dec << " ";
-        }
-    
-    std::clog << "\n";
         
     // --- Second subpage ---
     sp = MLX90640_GetFrameData(address_, subpage1.data());
@@ -230,15 +217,7 @@ bool MLX90640Reader::readFrame(std::vector<float> &frameData)
     } 
        
     Ta = MLX90640_GetTa(subpage1.data(), &params_);
-    std::clog << "[MLX90640] --- Dump first 40 words of subpage1 \n";
     
-    for (int i = 0; i < 40; ++i) {
-        std::clog << std::setw(2) << i << ": " << std::hex << std::showbase
-                  << subpage1[i] << std::dec << " ";
-    }
-
-    std::clog << "\n";
-
     // --- Convert to temperatures ---
     subframe1.resize(Geometry::WIDTH * Geometry::HEIGHT);
 
@@ -247,31 +226,21 @@ bool MLX90640Reader::readFrame(std::vector<float> &frameData)
                          IRParams::EMISSIVITY,
                          Ta,
                          subframe1.data());
-
-    
-    std::clog << "[MLX90640] --- Dump first 40 words of To for subpage0 \n";
-
-        for (int i = 0; i < 40; ++i) {
-        std::clog << std::setw(2) << i << ": " << std::hex << std::showbase
-                  << subframe1[i] << std::dec << " ";
-        }
-  
-    std::clog << "\n";
-
     
     frameData.resize(Geometry::WIDTH * Geometry::HEIGHT);
 
 
+    std::clog << "[MLX90640] --- Imaged Dump  \n";
     // --- Merge subpages into a complete frame ---
     for (int i = 0; i < Geometry::PIXELS; ++i) {
         frameData[i] = (Geometry::PIXEL_TO_SUBPAGE[i] == 0)
                     ? subframe0[i]
                     : subframe1[i];
 
-        if (i<41) {
+        
            std::clog << std::setw(2) << i << ": " << std::hex << std::showbase
                   << frameData[i] << std::dec << " ";
-        }
+        
     }
 
     return true;
