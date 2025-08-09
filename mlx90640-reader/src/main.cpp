@@ -9,7 +9,7 @@
  * Summary:
  *   This standalone GUI test acquires thermal frames from the MLX90640
  *   infrared sensor over I2C and displays them as a color-mapped 32x24
- *   image using Qt5. The display updates in real time (~5 FPS), and
+ *   image using Qt5. The display updates in real time (~2 FPS), and
  *   min/max/average temperature statistics are shown below the image.
  *
  *   It uses the DuoSight I2cDevice class and MLX90640Reader wrapper
@@ -20,6 +20,8 @@
  */
 
 #include <iostream>
+#include <algorithm>
+#include <numeric>
 
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
