@@ -259,7 +259,7 @@ bool MLX90640Reader::readFrame(std::vector<float> &frameData)
     std::clog << "\n";
 
     
-    subframe1.resize(Geometry::WIDTH * Geometry::HEIGHT);
+    frameData.resize(Geometry::WIDTH * Geometry::HEIGHT);
 
 
     // --- Merge subpages into a complete frame ---
