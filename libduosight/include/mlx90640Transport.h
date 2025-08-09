@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "i2cUtils.h"
+#include "i2cUtils.hpp"
 
 #ifdef __cplusplus
 extern "C" {

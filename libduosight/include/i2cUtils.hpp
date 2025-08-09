@@ -28,7 +28,9 @@ public:
     bool writeBytes(const uint8_t* data, size_t length);
     bool readBytes(uint8_t* buffer, size_t length);
     bool writeThenRead(const uint8_t* txData, size_t txLen, uint8_t* rxData, size_t rxLen);
-
+    bool readRegister16(uint16_t reg, uint16_t& value);
+    bool writeRegister16(uint16_t reg, uint16_t value);
+    
 private:
     int fd_;
     uint8_t addr_;

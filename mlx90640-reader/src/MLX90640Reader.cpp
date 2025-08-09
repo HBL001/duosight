@@ -14,82 +14,238 @@
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
+#include <thread>
+#include <chrono>
+#include <array>
+#include <cmath>
+#include <iomanip> 
 
-#include "MLX90640Reader.h"
+#include "i2cUtils.hpp"
+#include "MLX90640Reader.hpp"
+#include "MLX90640Regs.hpp"
 #include "MLX90640_API.h"
+#include "mlx90640Transport.h"
+#include <algorithm>
 
 namespace duosight {
 
-MLX90640Reader::MLX90640Reader(const std::string& i2cPath, uint8_t address)
-    : address_(address)
+MLX90640Reader::MLX90640Reader(I2cDevice& bus, uint8_t address)
+    : bus_{&bus}, address_{address}
 {
-    i2c_ = std::make_unique<I2cDevice>(i2cPath, address);
+    mlx90640_set_i2c_device(bus_);        
 }
 
 MLX90640Reader::~MLX90640Reader() {}
 
-bool MLX90640Reader::initialize() {
-    if (!i2c_ || !i2c_->isOpen()) {
-        std::cerr << "[MLX90640] I2C device not open\n";
+
+refresh::RefreshInfo MLX90640Reader::readRefreshRate(bool verbose) const
+{
+    uint16_t ctrl = 0;
+    refresh::RefreshInfo info{ -1, -1.0f, -1.0f };
+    if (MLX90640_I2CRead(address_, 0x800D, 1, &ctrl) != 0) {
+        if (verbose) {
+            std::cerr << "[MLX90640] readRefreshRate: failed to read CTRL1 (0x800D)\n";
+        }
+        return info;
+    }
+
+    static const float lut[8] = { 0.5f, 1, 2, 4, 8, 16, 32, 64 };
+
+    info.code = (ctrl >> 7) & 0x07;
+    if (info.code >= 0 && info.code < 8) {
+        info.hz = lut[info.code];
+        info.subpage_period_s = 1.0f / (info.hz * 2.0f);
+    }
+
+    if (verbose) {
+        std::clog << "[MLX90640] CTRL(0x800D)=0x"
+                  << std::hex << ctrl << std::dec
+                  << "  refresh_code=" << info.code
+                  << " (" << info.hz << " Hz full-frame, "
+                  << info.subpage_period_s * 1000.0f << " ms/subpage)\n";
+    }
+
+    return info;
+}
+
+
+bool MLX90640Reader::initialize()
+{
+    std::clog << "[MLX90640] --- initialize() ---\n";
+
+    // ─────────────────────────────────────────────
+    // 0) I²C sanity
+    // ─────────────────────────────────────────────
+    if (!bus_ || !bus_->isOpen()) {
+        std::cerr << "[MLX90640] ❌ I²C device not open\n";
         return false;
     }
 
+    // ─────────────────────────────────────────────
+    // 1) EEPROM → params
+    // ─────────────────────────────────────────────
     if (MLX90640_DumpEE(address_, eepromData_) != 0) {
-        std::cerr << "[MLX90640] Failed to dump EEPROM\n";
+        std::cerr << "[MLX90640] EEPROM dump failed\n";
+        return false;
+    }
+    if (MLX90640_ExtractParameters(eepromData_, &params_) != 0) {
+        std::cerr << "[MLX90640] Parameter extraction failed\n";
+        return false;
+    }
+    std::clog << "[MLX90640] Parameters extracted OK\n";
+
+    // ─────────────────────────────────────────────
+    // 2) Configure sensor
+    // ─────────────────────────────────────────────
+    if (int rc = MLX90640_SetRefreshRate(address_, refresh::FR2); rc != 0) {
+        std::cerr << "[MLX90640] SetRefreshRate(FR2) failed rc=" << rc << "\n";
+        return false;
+    }
+    std::clog << "[MLX90640] Refresh rate set to FR2 (2 Hz full-frame)\n";
+
+    if (int rc = MLX90640_SetChessMode(address_); rc != 0) {
+        std::cerr << "[MLX90640] SetChessMode failed rc=" << rc << " (continuing)\n";
+    } else {
+        std::clog << "[MLX90640] Chess mode set\n";
+    }
+
+    // ─────────────────────────────────────────────
+    // 3) TIMING SETUP — CRITICAL for frame capture
+    //    This determines our subpage period for polling
+    // ─────────────────────────────────────────────
+    auto ri = readRefreshRate(true); // logs CTRL1 & derived Hz/ms
+    if (ri.code != refresh::FR2) {
+        std::cerr << "[MLX90640] ⚠ Refresh rate readback (" << ri.code
+                  << ") does not match requested FR2\n";
+    }
+    // NOTE: save ri.subpage_period_s somewhere if you want to use it globally
+
+    // ─────────────────────────────────────────────
+    // 4) Clear NEW_DATA_READY before first capture
+    // ─────────────────────────────────────────────
+    uint16_t statusBefore = 0, statusAfter = 0;
+    if (MLX90640_I2CRead(address_, 0x8000, 1, &statusBefore) != 0)
+        std::cerr << "[MLX90640] ⚠ Failed to read STATUS before clear\n";
+
+    if (int rc = MLX90640_I2CWrite(address_, 0x8000, 0x0000); rc != 0) {
+        std::cerr << "[MLX90640] Failed to clear status (0x8000) rc=" << rc << "\n";
         return false;
     }
 
-    if (MLX90640_ExtractParameters(eepromData_, params_) != 0) {
-        std::cerr << "[MLX90640] Failed to extract sensor parameters\n";
+    if (MLX90640_I2CRead(address_, 0x8000, 1, &statusAfter) != 0)
+        std::cerr << "[MLX90640] ⚠ Failed to read STATUS after clear\n";
+
+    std::clog << "[MLX90640] Cleared NEW_DATA_READY status: before=0x"
+              << std::hex << statusBefore << " after=0x" << statusAfter << std::dec << "\n";
+
+    // ─────────────────────────────────────────────
+    // 5) Settle delay
+    // ─────────────────────────────────────────────
+    usleep(5'000);
+
+    std::clog << "[MLX90640] --- initialize() OK ---\n";
+    return true;
+}
+
+
+void MLX90640Reader::sleepNow(int delay)
+{
+    std::this_thread::sleep_for(std::chrono::microseconds(delay));
+}
+
+
+bool MLX90640Reader::readFrame(std::vector<float> &frameData)
+{
+    using namespace duosight;
+
+    float Ta;
+    
+    
+    if (!bus_ || !bus_->isOpen()) {
+        std::cerr << "[MLX90640] I²C device not open\n";
         return false;
     }
 
-    MLX90640_SetRefreshRate(address_, 0x05); // 8Hz for test
+    // --- Read refresh rate info ---
+    const auto ri = readRefreshRate(true); // verbose prints rate/subpage time
+    if (ri.code < 0 || ri.subpage_period_s <= 0.0f) {
+        std::cerr << "[MLX90640] ❌ Invalid refresh rate — cannot proceed\n";
+        return false;
+    }
+
+    const int us_per_poll   = Polling::DELAY_US;
+    const int max_polls_per = static_cast<int>((ri.subpage_period_s * 1.25f * 1'000'000) / us_per_poll);
+    
+
+    std::array<uint16_t, Geometry::WORDS> subpage0{};
+    std::array<uint16_t, Geometry::WORDS> subpage1{};
+    std::vector<float> subframe0{};
+    std::vector<float> subframe1{};
+    
+    int sp = -1;
+
+    // --- First subpage ---
+    sp = MLX90640_GetFrameData(address_, subpage0.data());
+    if (sp != 0) {
+        std::clog << "[MLX90640] GetFrameData failed for first subpage rc=" << sp << "\n";
+        return false;
+    }
+
+    std::clog << "\n";
+
+    Ta = MLX90640_GetTa(subpage0.data(), &params_);
+    std::clog << "[MLX90640] --- Dump first 40 words of subpage0 \n";
+    
+        
+    std::clog << "\n";
+    
+    // --- Convert to temperatures ---
+    subframe0.resize(Geometry::WIDTH * Geometry::HEIGHT);
+        
+    MLX90640_CalculateTo(subpage0.data(),
+                         &params_,
+                         IRParams::EMISSIVITY,
+                         Ta,
+                         subframe0.data());
+
+        
+    // --- Second subpage ---
+    sp = MLX90640_GetFrameData(address_, subpage1.data());
+    if (sp != 1) {
+        std::clog << "[MLX90640] GetFrameData failed for second subpage rc=" << sp << "\n";
+        return false;
+    } 
+       
+    Ta = MLX90640_GetTa(subpage1.data(), &params_);
+    
+    // --- Convert to temperatures ---
+    subframe1.resize(Geometry::WIDTH * Geometry::HEIGHT);
+
+    MLX90640_CalculateTo(subpage1.data(),
+                         &params_,
+                         IRParams::EMISSIVITY,
+                         Ta,
+                         subframe1.data());
+    
+    frameData.resize(Geometry::WIDTH * Geometry::HEIGHT);
+
+
+    std::clog << "[MLX90640] --- Imaged Dump  \n";
+    // --- Merge subpages into a complete frame ---
+    for (int i = 0; i < Geometry::PIXELS; ++i) {
+        frameData[i] = (Geometry::PIXEL_TO_SUBPAGE[i] == 0)
+                    ? subframe0[i]
+                    : subframe1[i];
+
+        
+           std::clog << std::setw(2) << i << ": " << std::hex << std::showbase
+                  << frameData[i] << std::dec << " ";
+        
+    }
 
     return true;
 }
 
-bool MLX90640Reader::readFrame(std::vector<float>& frameData) {
-    if (!i2c_ || !i2c_->isOpen()) return false;
 
-    uint16_t frame[834];
-    int attempts = 10;
-
-    while (attempts-- > 0) {
-        int status = MLX90640_GetFrameData(address_, frame);
-        if (status == 0) {
-            frameData.resize(768);
-            MLX90640_CalculateTo(frame, params_, 0.95f, 25.0f, frameData.data());
-            return true;
-        }
-        usleep(1000);
-    }
-
-    std::cerr << "[MLX90640] Failed to read frame after retries\n";
-    return false;
-}
-
-void MLX90640Reader::printSummary(const std::vector<float>& frameData) {
-    if (frameData.size() != 768) {
-        std::cerr << "[MLX90640] Invalid frame size\n";
-        return;
-    }
-
-    float minT = frameData[0];
-    float maxT = frameData[0];
-    float sumT = 0.0f;
-
-    for (float t : frameData) {
-        if (t < minT) minT = t;
-        if (t > maxT) maxT = t;
-        sumT += t;
-    }
-
-    float avgT = sumT / frameData.size();
-
-    std::cout << "[MLX90640] Frame: min=" << minT
-              << "°C max=" << maxT
-              << "°C avg=" << avgT << "°C\n";
-}
 
 } // namespace duosight

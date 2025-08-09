@@ -12,7 +12,6 @@
  *   such as MLX90640 from user space.
  */
 
-#include "i2cUtils.h"
 #include <linux/i2c.h>  
 #include <fcntl.h>
 #include <unistd.h>
@@ -20,6 +19,7 @@
 #include <linux/i2c-dev.h>
 #include <cstring>
 #include <iostream>
+#include "i2cUtils.hpp"
 
 /* Verdin imx8x plus base station setup
 *
@@ -94,6 +94,28 @@ bool I2cDevice::writeThenRead(const uint8_t* txData, size_t txLen, uint8_t* rxDa
     packets.nmsgs = 2;
 
     return ioctl(fd_, I2C_RDWR, &packets) >= 0;
+}
+
+bool I2cDevice::readRegister16(uint16_t reg, uint16_t& value) {
+    uint8_t tx[2] = { static_cast<uint8_t>(reg >> 8), static_cast<uint8_t>(reg & 0xFF) };
+    uint8_t rx[2] = { 0 };
+
+    if (!writeBytes(tx, 2)) return false;
+    if (!readBytes(rx, 2)) return false;
+
+    value = (rx[0] << 8) | rx[1]; // Big-endian
+    return true;
+}
+
+bool I2cDevice::writeRegister16(uint16_t reg, uint16_t value) {
+    uint8_t tx[4] = {
+        static_cast<uint8_t>(reg >> 8),     // MSB of register address
+        static_cast<uint8_t>(reg & 0xFF),   // LSB of register address
+        static_cast<uint8_t>(value >> 8),   // MSB of data
+        static_cast<uint8_t>(value & 0xFF)  // LSB of data
+    };
+
+    return writeBytes(tx, 4);
 }
 
 } // namespace duosight

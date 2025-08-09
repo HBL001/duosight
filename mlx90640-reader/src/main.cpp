@@ -1,5 +1,5 @@
 /**
- * @file test_mlx90640_gui.cpp
+ * @file main.cpp
  * @brief Live thermal image viewer for MLX90640 sensor using Qt5.
  *
  * (c) 2025 Highland Biosciences
@@ -9,7 +9,7 @@
  * Summary:
  *   This standalone GUI test acquires thermal frames from the MLX90640
  *   infrared sensor over I2C and displays them as a color-mapped 32x24
- *   image using Qt5. The display updates in real time (~5 FPS), and
+ *   image using Qt5. The display updates in real time (~2 FPS), and
  *   min/max/average temperature statistics are shown below the image.
  *
  *   It uses the DuoSight I2cDevice class and MLX90640Reader wrapper
@@ -19,6 +19,9 @@
  *   Intended for hardware validation and GUI integration testing.
  */
 
+#include <iostream>
+#include <algorithm>
+#include <numeric>
 
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
@@ -28,12 +31,10 @@
 #include <QtGui/QImage>
 #include <QtGui/QPainter>
 
-#include "MLX90640Reader.h"
-#include "i2cUtils.h"
+#include "MLX90640Reader.hpp"
+#include "MLX90640Regs.hpp"
+#include "i2cUtils.hpp"
 #include "mlx90640Transport.h"
-
-constexpr int WIDTH = 32;
-constexpr int HEIGHT = 24;
 
 QRgb mapTemperatureToColor(float temp, float minT, float maxT) {
     float t = (temp - minT) / (maxT - minT);
@@ -46,15 +47,15 @@ QRgb mapTemperatureToColor(float temp, float minT, float maxT) {
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    // Setup I2C and sensor
-    duosight::I2cDevice i2c("/dev/i2c-3", 0x33);
-    if (!i2c.isOpen()) {
-        qCritical("❌ I2C open failed (/dev/i2c-3 @ 0x33)");
+    // open I2C bus, register MLX90640 device  0x33, makes a handle
+    duosight::I2cDevice bus(duosight::Bus::DEV, duosight::Bus::SLAVE_ADDR);
+    if (!bus.isOpen()) {
+        qCritical("❌ I²C open failed (/dev/i2c-3 @ 0x33)");
         return 1;
     }
 
-    mlx90640_set_i2c_device(&i2c);
-    duosight::MLX90640Reader sensor("/dev/i2c-3", 0x33);
+    // initialise the reader
+    duosight::MLX90640Reader sensor(bus, duosight::Bus::SLAVE_ADDR);
     if (!sensor.initialize()) {
         qCritical("❌ Sensor init failed");
         return 1;
@@ -79,6 +80,7 @@ int main(int argc, char *argv[]) {
     QTimer *timer = new QTimer;
     QObject::connect(timer, &QTimer::timeout, [&]() {
         std::vector<float> frame;
+
         if (!sensor.readFrame(frame)) {
             infoLabel->setText("❌ Frame read failed");
             return;
@@ -88,10 +90,16 @@ int main(int argc, char *argv[]) {
         float maxT = *std::max_element(frame.begin(), frame.end());
         float avgT = std::accumulate(frame.begin(), frame.end(), 0.0f) / frame.size();
 
-        QImage img(WIDTH, HEIGHT, QImage::Format_RGB888);
-        for (int i = 0; i < HEIGHT; ++i) {
-            for (int j = 0; j < WIDTH; ++j) {
-                float t = frame[i * WIDTH + j];
+        QImage img(duosight::Geometry::WIDTH,
+                duosight::Geometry::HEIGHT,
+                QImage::Format_RGB888);
+
+        // Optional: clear to a known background
+        img.fill(qRgb(0, 0, 0));
+
+        for (int i = 0; i < duosight::Geometry::HEIGHT; ++i) {
+            for (int j = 0; j < duosight::Geometry::WIDTH; ++j) {
+                float t = frame[i * duosight::Geometry::WIDTH + j];
                 img.setPixel(j, i, mapTemperatureToColor(t, minT, maxT));
             }
         }
@@ -103,7 +111,7 @@ int main(int argc, char *argv[]) {
             .arg(maxT, 0, 'f', 2)
             .arg(avgT, 0, 'f', 2));
     });
-    timer->start(200);  // ~5 fps
+    timer->start(500);  // ~2 fps for the moment
 
     return app.exec();
 }
