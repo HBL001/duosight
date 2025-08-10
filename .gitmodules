@@ -1,3 +1,7 @@
 [submodule "mlx90640-library"]
 	path = mlx90640-library
 	url = git@github.com:HBL001/mlx90640-library.git
+[submodule "duosight/lepton"]
+	path = duosight/lepton
+	url = git@github.com:HBL001/Lepton-IR.git
+	branch = main
