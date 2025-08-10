@@ -5,3 +5,7 @@
 	path = duosight/lepton
 	url = git@github.com:HBL001/Lepton-IR.git
 	branch = main
+[submodule "Lepton-IR"]
+	path = Lepton-IR
+	url = git@github.com:HBL001/Lepton-IR.git
+	branch = main
