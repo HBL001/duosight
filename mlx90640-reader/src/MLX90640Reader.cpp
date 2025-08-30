@@ -230,18 +230,26 @@ bool MLX90640Reader::readFrame(std::vector<float> &frameData)
     frameData.resize(Geometry::WIDTH * Geometry::HEIGHT);
 
 
-    std::clog << "[MLX90640] --- Imaged Dump  \n";
-    // --- Merge subpages into a complete frame ---
-    for (int i = 0; i < Geometry::PIXELS; ++i) {
-        frameData[i] = (Geometry::PIXEL_TO_SUBPAGE[i] == 0)
-                    ? subframe0[i]
-                    : subframe1[i];
+   // assumes: WIDTH * HEIGHT == Geometry::PIXELS
+std::clog << "[MLX90640] --- Image Dump (" << Geometry::WIDTH << " x " << Geometry::HEIGHT << ")\n";
 
-        
-           std::clog << std::setw(2) << i << ": " << std::hex << std::showbase
-                  << frameData[i] << std::dec << " ";
-        
+for (int row = 0; row < static_cast<int>(Geometry::HEIGHT); ++row) {
+    for (int col = 0; col < static_cast<int>(Geometry::WIDTH); ++col) {
+        const int i = (row * static_cast<int>(Geometry::WIDTH)) + col;
+
+        // --- Merge subpages into a complete frame ---
+        frameData[i] = (Geometry::PIXEL_TO_SUBPAGE[i] == 0)
+                     ? subframe0[i]
+                     : subframe1[i];
+
+        // print with a space between values; no trailing space at EOL
+        std::clog << frameData[i];
+        if (col + 1 < static_cast<int>(Geometry::WIDTH)) {
+            std::clog << ' ';
+        }
     }
+    std::clog << '\n'; // newline after exactly WIDTH datapoints
+}
 
     return true;
 }
